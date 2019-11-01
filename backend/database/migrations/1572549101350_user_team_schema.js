@@ -5,7 +5,7 @@ const Schema = use('Schema');
 
 class UserTeamSchema extends Schema {
   up() {
-    this.create('users_teams', table => {
+    this.create('user_teams', table => {
       table.increments();
       table
         .integer('user_id')
