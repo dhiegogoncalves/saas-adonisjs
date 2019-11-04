@@ -13,4 +13,4 @@ class Invite {
   }
 }
 
-module.exports = invite;
+module.exports = Invite;
