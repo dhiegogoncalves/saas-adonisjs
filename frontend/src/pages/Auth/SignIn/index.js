@@ -24,7 +24,6 @@ class SignIn extends Component {
 
   handleSubmit = e => {
     const { email, password } = this.state;
-    console.log(email);
     const { signInRequest } = this.props;
 
     signInRequest(email, password);

@@ -10,8 +10,8 @@ export const AuthTypes = Types;
 export default Creators;
 
 export const INITIAL_STATE = Immutable({
-  signedIn: false,
-  token: null
+  signedIn: !!localStorage.getItem('@Project:token'),
+  token: localStorage.getItem('@Project:token') || null
 });
 
 export const success = (state, { token }) =>
