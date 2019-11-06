@@ -23,6 +23,7 @@ class SignIn extends Component {
   };
 
   handleSubmit = e => {
+    e.preventDefault();
     const { email, password } = this.state;
     const { signInRequest } = this.props;
 
@@ -53,7 +54,7 @@ class SignIn extends Component {
             onChange={this.handleInputChange}
           />
 
-          <Button size="big" type="submit" onClick={this.handleSubmit}>
+          <Button size="big" type="submit">
             Entrar
           </Button>
         </SignForm>
