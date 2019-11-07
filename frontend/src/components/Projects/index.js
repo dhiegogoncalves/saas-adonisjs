@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import ProjectsActions from '../../store/ducks/projects';
+import MembersActions from '../../store/ducks/members';
+
+import Members from '../Members';
 
 import Modal from '../../components/Modal';
 import Button from '../../styles/components/button';
@@ -16,6 +19,7 @@ class Projects extends Component {
     openProjectModal: PropTypes.func.isRequired,
     closeProjectModal: PropTypes.func.isRequired,
     createProjectRequest: PropTypes.func.isRequired,
+    openMembersModal: PropTypes.func.isRequired,
     activeTeam: PropTypes.shape({
       name: PropTypes.string
     }).isRequired,
@@ -27,6 +31,9 @@ class Projects extends Component {
         })
       ),
       projectModalOpen: PropTypes.bool
+    }).isRequired,
+    members: PropTypes.shape({
+      membersModalOpen: PropTypes.bool
     }).isRequired
   };
 
@@ -59,7 +66,9 @@ class Projects extends Component {
       activeTeam,
       projects,
       openProjectModal,
-      closeProjectModal
+      closeProjectModal,
+      openMembersModal,
+      members
     } = this.props;
 
     const { newProject } = this.state;
@@ -74,7 +83,7 @@ class Projects extends Component {
             <Button type="button" onClick={openProjectModal}>
               + Novo
             </Button>
-            <Button type="button" onClick={() => {}}>
+            <Button type="button" onClick={openMembersModal}>
               Membros
             </Button>
           </div>
@@ -113,6 +122,8 @@ class Projects extends Component {
             </form>
           </Modal>
         )}
+
+        {members.membersModalOpen && <Members />}
       </Container>
     );
   }
@@ -120,11 +131,12 @@ class Projects extends Component {
 
 const mapStateToProps = state => ({
   activeTeam: state.teams.active,
-  projects: state.projects
+  projects: state.projects,
+  members: state.members
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators(ProjectsActions, dispatch);
+  bindActionCreators({ ...ProjectsActions, ...MembersActions }, dispatch);
 
 export default connect(
   mapStateToProps,
