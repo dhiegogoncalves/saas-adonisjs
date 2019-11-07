@@ -16,6 +16,7 @@ export const MembersList = styled.ul`
 
     strong {
       font-size: 18px;
+      margin-right: 30px;
     }
 
     > div {
