@@ -5,7 +5,7 @@
 ## Site
 
 <p align="center">
-    <img src="frontend/print2.png" alt="drawing" width="700"/>
+    <img src="frontend/print2.PNG" alt="drawing" width="700"/>
 </p>
 
 ## Iniciar a aplicacão :checkered_flag:
