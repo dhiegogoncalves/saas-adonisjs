@@ -40,7 +40,7 @@ class SignIn extends Component {
 
           <span>E-MAIL</span>
           <input
-            type="text"
+            type="email"
             name="email"
             value={email}
             onChange={this.handleInputChange}
