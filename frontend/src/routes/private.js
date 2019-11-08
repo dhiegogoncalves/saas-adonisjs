@@ -5,22 +5,25 @@ import { Route, Redirect } from 'react-router-dom';
 import store from '../store';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={props =>
-      store.getState().auth.signedIn ? (
-        <Component {...props} />
-      ) : (
-        <Redirect
-          to={{ pathname: '/signin', state: { from: props.location } }}
-        />
-      )
-    }
-  />
+    <Route
+        {...rest}
+        render={props =>
+            store.getState().auth.signedIn ? (
+                <Component {...props} />
+            ) : (
+                <Redirect
+                    to={{
+                        pathname: '/signin',
+                        state: { from: props.location }
+                    }}
+                />
+            )
+        }
+    />
 );
 
 PrivateRoute.propTypes = {
-  component: PropTypes.any.isRequired
+    component: PropTypes.any.isRequired
 };
 
 export default PrivateRoute;

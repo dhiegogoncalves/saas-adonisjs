@@ -11,13 +11,13 @@ import SignUp from '../pages/Auth/SignUp';
 import SignIn from '../pages/Auth/SignIn';
 
 const Routes = () => (
-  <ConnectedRouter history={history}>
-    <Switch>
-      <Guest path="/signin" component={SignIn} />
-      <Guest path="/signup" component={SignUp} />
-      <Private path="/" component={Main} />
-    </Switch>
-  </ConnectedRouter>
+    <ConnectedRouter history={history}>
+        <Switch>
+            <Guest path="/signin" component={SignIn} />
+            <Guest path="/signup" component={SignUp} />
+            <Private path="/" component={Main} />
+        </Switch>
+    </ConnectedRouter>
 );
 
 export default Routes;

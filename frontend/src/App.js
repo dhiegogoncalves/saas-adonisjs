@@ -8,13 +8,13 @@ import Routes from './routes';
 import GlobalStyle from './styles/global';
 
 const App = () => (
-  <Provider store={store}>
-    <Fragment>
-      <Routes />
-      <ReduxToastr timeOut={2000} closeOnToastrClick />
-      <GlobalStyle />
-    </Fragment>
-  </Provider>
+    <Provider store={store}>
+        <Fragment>
+            <Routes />
+            <ReduxToastr timeOut={2000} closeOnToastrClick />
+            <GlobalStyle />
+        </Fragment>
+    </Provider>
 );
 
 export default App;

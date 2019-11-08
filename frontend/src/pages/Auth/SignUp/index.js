@@ -9,69 +9,69 @@ import Button from '../../../styles/components/button';
 import { Container, SignForm } from '../styles';
 
 class SignUp extends Component {
-  static propTypes = {
-    signUpRequest: PropTypes.func.isRequired
-  };
+    static propTypes = {
+        signUpRequest: PropTypes.func.isRequired
+    };
 
-  state = { name: '', email: '', password: '' };
+    state = { name: '', email: '', password: '' };
 
-  handleInputChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+    handleInputChange = e => {
+        this.setState({ [e.target.name]: e.target.value });
+    };
 
-  handleSubmit = e => {
-    e.preventDefault();
-    const { name, email, password } = this.state;
-    const { signUpRequest } = this.props;
+    handleSubmit = e => {
+        e.preventDefault();
+        const { name, email, password } = this.state;
+        const { signUpRequest } = this.props;
 
-    signUpRequest(name, email, password);
-  };
+        signUpRequest(name, email, password);
+    };
 
-  render() {
-    const { name, email, password } = this.state;
+    render() {
+        const { name, email, password } = this.state;
 
-    return (
-      <Container>
-        <SignForm onSubmit={this.handleSubmit}>
-          <h1>Criar conta</h1>
+        return (
+            <Container>
+                <SignForm onSubmit={this.handleSubmit}>
+                    <h1>Criar conta</h1>
 
-          <span>NAME</span>
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={this.handleInputChange}
-          />
+                    <span>NAME</span>
+                    <input
+                        type="text"
+                        name="name"
+                        value={name}
+                        onChange={this.handleInputChange}
+                    />
 
-          <span>E-MAIL</span>
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={this.handleInputChange}
-          />
+                    <span>E-MAIL</span>
+                    <input
+                        type="email"
+                        name="email"
+                        value={email}
+                        onChange={this.handleInputChange}
+                    />
 
-          <span>SENHA</span>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={this.handleInputChange}
-          />
+                    <span>SENHA</span>
+                    <input
+                        type="password"
+                        name="password"
+                        value={password}
+                        onChange={this.handleInputChange}
+                    />
 
-          <Button size="big" type="submit">
-            CRIAR
-          </Button>
-        </SignForm>
-      </Container>
-    );
-  }
+                    <Button size="big" type="submit">
+                        CRIAR
+                    </Button>
+                </SignForm>
+            </Container>
+        );
+    }
 }
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators(AuthActions, dispatch);
+    bindActionCreators(AuthActions, dispatch);
 
 export default connect(
-  null,
-  mapDispatchToProps
+    null,
+    mapDispatchToProps
 )(SignUp);

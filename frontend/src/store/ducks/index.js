@@ -8,11 +8,11 @@ import { reducer as projects } from './projects';
 import { reducer as members } from './members';
 
 export default history =>
-  combineReducers({
-    auth,
-    teams,
-    projects,
-    members,
-    toastr,
-    router: connectRouter(history)
-  });
+    combineReducers({
+        auth,
+        teams,
+        projects,
+        members,
+        toastr,
+        router: connectRouter(history)
+    });
