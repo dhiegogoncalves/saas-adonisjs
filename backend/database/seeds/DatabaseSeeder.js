@@ -21,8 +21,8 @@ const Permission = use('Adonis/Acl/Permission');
 class DatabaseSeeder {
   async run() {
     const user = await User.create({
-      name: 'test',
-      email: 'test@email.com',
+      name: 'Admin',
+      email: 'admin@email.com',
       password: '123456'
     });
 

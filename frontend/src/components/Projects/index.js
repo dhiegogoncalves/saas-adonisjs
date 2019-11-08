@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 import ProjectsActions from '../../store/ducks/projects';
 import MembersActions from '../../store/ducks/members';
 
+import Can from '../Can';
 import Members from '../Members';
 
 import Modal from '../../components/Modal';
@@ -84,9 +85,11 @@ class Projects extends Component {
         <header>
           <h1>{activeTeam.name}</h1>
           <div>
-            <Button type="button" onClick={openProjectModal}>
-              + Novo
-            </Button>
+            <Can checkPermission="projects_create">
+              <Button type="button" onClick={openProjectModal}>
+                + Novo
+              </Button>
+            </Can>
             <Button type="button" onClick={openMembersModal}>
               Membros
             </Button>

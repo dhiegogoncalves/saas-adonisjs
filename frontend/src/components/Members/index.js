@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import MembersActions from '../../store/ducks/members';
 
+import Can from '../Can';
 import Modal from '../Modal';
 import Button from '../../styles/components/button';
 
@@ -70,33 +71,41 @@ class Members extends Component {
     const { roles, invite } = this.state;
 
     return (
-      <Modal>
+      <Modal size="big">
         <h1>Membros</h1>
-
-        <Invite onSubmit={this.handleInvite}>
-          <input
-            type="text"
-            name="invite"
-            placeholder="Convidar para o time"
-            value={invite}
-            onChange={this.handleInputChange}
-          />
-          <Button type="submit">Enviar</Button>
-        </Invite>
+        <Can checkPermission="invites_create">
+          <Invite onSubmit={this.handleInvite}>
+            <input
+              type="text"
+              name="invite"
+              placeholder="Convidar para o time"
+              value={invite}
+              onChange={this.handleInputChange}
+            />
+            <Button type="submit">Enviar</Button>
+          </Invite>
+        </Can>
 
         <form>
           <MembersList>
             {members.data.map(member => (
               <li key={member.id}>
                 <strong>{member.user.name}</strong>
-                <Select
-                  isMulti
-                  options={roles}
-                  value={member.roles}
-                  getOptionLabel={role => role.name}
-                  getOptionValue={role => role.id}
-                  onChange={value => this.handleRolesChange(member.id, value)}
-                />
+                <Can checkRole="administrator">
+                  {can => (
+                    <Select
+                      isMulti
+                      isDisabled={!can}
+                      options={roles}
+                      value={member.roles}
+                      getOptionLabel={role => role.name}
+                      getOptionValue={role => role.id}
+                      onChange={value =>
+                        this.handleRolesChange(member.id, value)
+                      }
+                    />
+                  )}
+                </Can>
               </li>
             ))}
           </MembersList>
